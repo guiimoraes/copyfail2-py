@@ -18,7 +18,16 @@ The kernel bug resides in the UDP splice path used by xfrm ESP-in-UDP encapsulat
 - Python 3.8+
 - `CAP_NET_ADMIN` or the ability to create user namespaces
 
-## Usage
+## Which version to use
+
+This repo provides two variants. Both produce the same result; pick based on your constraints.
+
+| File | Description | Speed | Use when |
+|------|-------------|-------|----------|
+| `exploit.py` | **Optimized** — reuses xfrm state/sockets/pipe across mutations, batches 2 consecutive bytes per round, active polling instead of fixed sleep. | ~3–8 s for a 99-byte line | Default choice. Fast, stable, tested on multiple distros. |
+| `exploit_raw.py` | **Reference** — closest to the original C code. Recreates xfrm state, sockets, pipe and temp file for **every single byte**, fixed 200 ms sleep per mutation. | ~30–40 s for a 99-byte line | Use if you want the simplest possible code path for auditing, or if the optimized version misbehaves on a specific kernel build. |
+
+### Quick start (optimized)
 
 ```bash
 # One-liner via pipe
@@ -29,6 +38,13 @@ python3 exploit.py
 
 # Revert changes
 python3 exploit.py --clean
+```
+
+### Quick start (raw/reference)
+
+```bash
+python3 exploit_raw.py
+python3 exploit_raw.py --clean
 ```
 
 On Ubuntu with `apparmor_restrict_unprivileged_userns` enabled, save the file first and run from disk; the pipe mode skips the AppArmor bypass dance.
@@ -78,7 +94,6 @@ If running inside Docker, start the container with `--privileged` or `--cap-add=
 - Brad Spengler / grsecurity — coined "copyfail-class"
 - Theori / Xint — original Copy Fail (CVE-2026-31431)
 - Original C exploit by 0xdeadbeefnetwork
-- Python version by @guipmoraes
 
 ## Disclaimer
 
