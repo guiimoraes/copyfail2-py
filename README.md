@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="demo.gif" alt="CopyFail2 exploit demo" width="800">
+</p>
+
 # CopyFail2 (CVE-2026-31431) - Python Implementation
 
 Python port of the CopyFail2 kernel exploit leveraging xfrm ESP-in-UDP `MSG_SPLICE_PAGES` no-COW fast path for unprivileged Linux local privilege escalation.
